@@ -11,8 +11,7 @@ import io.github.jan.supabase.storage.Storage
 import io.github.jan.supabase.storage.storage
 
 object SupabaseModule {
-    fun SupabaseClient(): SupabaseClient {
-        return createSupabaseClient(
+    val client = createSupabaseClient(
             supabaseUrl = "https://thaebjriqgthygwjzpxk.supabase.co",
             supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRoYWVianJpcWd0aHlnd2p6cHhrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzY4NTI0NDYsImV4cCI6MjA1MjQyODQ0Nn0.xvfhjNmDK1vKxoiV_XlnE9J59BHAapPOcU1fLDxoUvE"
         ) {
@@ -24,7 +23,6 @@ object SupabaseModule {
             }
             install(Storage)
         }
-    }
     fun supabaseDatabase(client: SupabaseClient): Postgrest {
         return client.postgrest
     }

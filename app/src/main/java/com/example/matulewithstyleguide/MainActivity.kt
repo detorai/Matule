@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import cafe.adriel.voyager.navigator.Navigator
 import com.example.matulewithstyleguide.di.appModule
 import com.example.matulewithstyleguide.ui.sprint_1.SignInScreen
+import com.example.matulewithstyleguide.ui.sprint_2.SplashScreen
 import org.koin.core.context.GlobalContext.startKoin
 
 class MainActivity : ComponentActivity() {

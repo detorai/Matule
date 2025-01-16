@@ -3,6 +3,7 @@ package com.example.matulewithstyleguide.common
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Text
@@ -26,6 +27,7 @@ fun ButtonWithText(
 ){
     Button(
         modifier = modifier.height(50.dp).fillMaxWidth(),
+        shape = RoundedCornerShape(14.dp),
         onClick = onButtonClick,
         colors = ButtonColors(
             contentColor = Background,

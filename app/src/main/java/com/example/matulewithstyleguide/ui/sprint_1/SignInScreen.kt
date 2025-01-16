@@ -30,11 +30,15 @@ class SignInScreen: Screen {
             passwordText = passwordText,
             onPasswordChange = viewModel::onPasswordChange,
             onButtonClick = {
-                viewModel.signIn()
+                viewModel.signIn(
+                    email = emailText,
+                    password = passwordText
+                )
             },
             onClickText = {},
             viewState = viewState,
-            viewStateChange = viewModel::viewStateChange
+            viewStateChange = viewModel::viewStateChange,
+            onCreate = {}
         )
     }
 }

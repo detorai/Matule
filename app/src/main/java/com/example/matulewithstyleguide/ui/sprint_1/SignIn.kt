@@ -21,6 +21,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.matulewithstyleguide.common.ButtonWithText
@@ -30,6 +31,8 @@ import com.example.matulewithstyleguide.ui.theme.Hint
 import com.example.matulewithstyleguide.ui.theme.SubTextDark
 import com.example.matulewithstyleguide.ui.theme.Text
 import com.example.matulewithstyleguide.R
+import com.example.matulewithstyleguide.common.ClickableTextRow
+import com.example.matulewithstyleguide.ui.theme.Block
 
 
 val peninimFont = FontFamily(Font(R.font.new_peninim_mt_2))
@@ -46,15 +49,16 @@ fun SignIn(
     viewStateChange: () -> Unit,
 
     onClickText: ()-> Unit,
-    onButtonClick: ()-> Unit
+    onButtonClick: ()-> Unit,
+    onCreate: ()-> Unit
 ){
     Column(
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.Start,
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight()
-            .background(Color.White)
+            .background(color = Block)
             .padding(horizontal = 20.dp)
     ) {
         Column(
@@ -62,7 +66,7 @@ fun SignIn(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxWidth()
-                .fillMaxHeight()
+                .padding(top = 121.dp)
         ) {
             Column(
                 verticalArrangement = Arrangement.Center,
@@ -77,13 +81,21 @@ fun SignIn(
                     color = Text
                 )
                 Text(
-                    "Заполните Свои Данные Или\n Продолжите Через Социальные Медиа",
+                    "Заполните Свои Данные Или",
                     color = SubTextDark,
                     fontSize = 16.sp,
                     fontFamily = peninimFont,
                     fontWeight = FontWeight.W400,
                     lineHeight = 24.sp,
-                    modifier = Modifier.padding(top = 8.dp)
+                    modifier = Modifier.padding(top = 8.dp),
+                )
+                Text(
+                    "Продолжите Через Социальные Медиа",
+                    color = SubTextDark,
+                    fontSize = 16.sp,
+                    fontFamily = peninimFont,
+                    fontWeight = FontWeight.W400,
+                    lineHeight = 24.sp
                 )
             }
             TextFieldRow(
@@ -98,7 +110,7 @@ fun SignIn(
                         lineHeight = 16.sp,
                         fontWeight = FontWeight.W400,
                         color = Hint
-                        )
+                    )
                 },
                 trailingIcon = {},
                 modifier = Modifier.padding(top = 35.dp)
@@ -118,10 +130,9 @@ fun SignIn(
                     )
                 },
                 visual =
-                if (viewState){
+                if (viewState) {
                     VisualTransformation.None
-                }
-                else {
+                } else {
                     PasswordVisualTransformation()
                 },
                 trailingIcon = {
@@ -130,7 +141,7 @@ fun SignIn(
                     ) {
                         Icon(
                             imageVector = ImageVector.vectorResource(
-                                when (viewState){
+                                when (viewState) {
                                     true -> R.drawable.open_eye
                                     false -> R.drawable.close_eye
                                 }
@@ -151,5 +162,28 @@ fun SignIn(
                 buttonText = "Войти"
             )
         }
+        ClickableTextRow(
+            clickable = " Создать пользователя",
+            nonClickable = "Вы впервые?",
+            onClick = onCreate,
+            modifier = Modifier.padding(bottom = 50.dp)
+        )
     }
+}
+
+@Preview
+@Composable
+fun Check() {
+    SignIn(
+        emailText = "123",
+        onEmailChange = {},
+        passwordText ="123",
+        onPasswordChange = {  },
+        onButtonClick = {
+        },
+        onClickText = {},
+        viewState = true,
+        viewStateChange = {},
+        onCreate = {}
+    )
 }

@@ -1,5 +1,6 @@
 package com.example.matulewithstyleguide.common
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,6 +19,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.matulewithstyleguide.ui.sprint_1.peninimFont
+import com.example.matulewithstyleguide.ui.theme.Background
 import com.example.matulewithstyleguide.ui.theme.Text
 
 
@@ -53,7 +55,7 @@ fun TextFieldRow(
             trailingIcon = trailingIcon,
             placeholder = placeholder,
             shape = RoundedCornerShape(14.dp),
-            modifier = Modifier.height(48.dp).fillMaxWidth(),
+            modifier = Modifier.height(48.dp).fillMaxWidth().background(color = Background),
         )
     }
 }

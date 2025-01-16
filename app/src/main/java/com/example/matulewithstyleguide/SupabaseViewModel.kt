@@ -4,7 +4,9 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.matulewithstyleguide.data.SupabaseModule
+import com.example.matulewithstyleguide.data.SupabaseModule.client
 import com.example.matulewithstyleguide.data.repository.AuthRepository
+import com.example.matulewithstyleguide.data.repository.AuthResult
 import io.github.jan.supabase.auth.auth
 import io.github.jan.supabase.auth.providers.builtin.Email
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -36,16 +38,18 @@ class SupabaseViewModel(private val authRep: AuthRepository): ViewModel() {
         _viewState.value = !_viewState.value
     }
 
-    fun signIn() {
+    fun signIn(
+        email: String,
+        password: String
+    ) {
         viewModelScope.launch {
-            try {
-                SupabaseModule.SupabaseClient().auth.signInWith(Email) {
-                    email = _emailText.value
-                    password = _passwordText.value
+            when (val result = authRep.signIn(email, password)) {
+                is AuthResult.Success -> {
+                    Log.d("SupabaseSignIn", "Успешный вход")
                 }
-                Log.d("SupabaseSignIn", "Success")
-            } catch (e: Exception) {
-                Log.e("SupabaseSignIn", "HA-HA  ${emailText.value} ${passwordText.value}")
+                is AuthResult.Failure -> {
+                    Log.e("SupabaseSignIn", "Ошибка: ${result.message}")
+                }
             }
         }
     }
