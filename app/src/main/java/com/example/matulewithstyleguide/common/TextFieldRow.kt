@@ -18,9 +18,9 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.matulewithstyleguide.ui.sprint_1.peninimFont
+import com.example.matulewithstyleguide.data.model.Font.peninimFont
 import com.example.matulewithstyleguide.ui.theme.Background
-import com.example.matulewithstyleguide.ui.theme.Text
+import com.example.matulewithstyleguide.ui.theme.TextColor
 
 
 @Composable
@@ -45,7 +45,7 @@ fun TextFieldRow(
             fontSize = 16.sp,
             lineHeight = 20.sp,
             textAlign = TextAlign.Center,
-            color = Text,
+            color = TextColor,
             modifier = Modifier.padding(0.dp, 0.dp, 0.dp, 12.dp)
         )
         OutlinedTextField(

@@ -3,7 +3,6 @@ package com.example.matulewithstyleguide.ui.sprint_1
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -13,11 +12,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -29,13 +25,16 @@ import com.example.matulewithstyleguide.common.TextClick
 import com.example.matulewithstyleguide.common.TextFieldRow
 import com.example.matulewithstyleguide.ui.theme.Hint
 import com.example.matulewithstyleguide.ui.theme.SubTextDark
-import com.example.matulewithstyleguide.ui.theme.Text
+import com.example.matulewithstyleguide.ui.theme.TextColor
 import com.example.matulewithstyleguide.R
 import com.example.matulewithstyleguide.common.ClickableTextRow
+import com.example.matulewithstyleguide.data.model.Font.peninimFont
+import com.example.matulewithstyleguide.ui.theme.Accent
+import com.example.matulewithstyleguide.ui.theme.Background
 import com.example.matulewithstyleguide.ui.theme.Block
 
 
-val peninimFont = FontFamily(Font(R.font.new_peninim_mt_2))
+
 
 @Composable
 fun SignIn(
@@ -78,7 +77,7 @@ fun SignIn(
                     fontWeight = FontWeight.W400,
                     fontSize = 32.sp,
                     lineHeight = 32.75.sp,
-                    color = Text
+                    color = TextColor
                 )
                 Text(
                     "Заполните Свои Данные Или",
@@ -159,7 +158,9 @@ fun SignIn(
             ButtonWithText(
                 modifier = Modifier.padding(top = 24.dp),
                 onButtonClick = onButtonClick,
-                buttonText = "Войти"
+                buttonText = "Войти",
+                mainColor = Accent,
+                secondaryColor = Background
             )
         }
         ClickableTextRow(

@@ -53,4 +53,18 @@ class SupabaseViewModel(private val authRep: AuthRepository): ViewModel() {
             }
         }
     }
+
+    // Sprint 2
+
+    private val _searchText = MutableStateFlow("")
+    val searchText = _searchText.asStateFlow()
+
+    fun onSearchChange(value: String){
+        _searchText.value = value
+    }
+
+    private val _shopState = MutableStateFlow(false)
+    val shopState = _shopState.asStateFlow()
+
+    val categories = listOf("Все", "Outdoor", "Tennis", "Running")
 }

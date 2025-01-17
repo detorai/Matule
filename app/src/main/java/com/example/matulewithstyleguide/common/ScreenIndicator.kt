@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.matulewithstyleguide.data.model.ScreenState
@@ -21,7 +20,10 @@ import com.example.matulewithstyleguide.ui.theme.Disable
 
 
 @Composable
-fun ScreenIndicator(currentScreen: ScreenState){
+fun ScreenIndicator(
+    currentScreen: ScreenState,
+    modifier: Modifier
+){
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -33,14 +35,14 @@ fun ScreenIndicator(currentScreen: ScreenState){
         screens.forEachIndexed { index, screen ->
             val isSelected = screen == currentScreen
             Box(
-                modifier = Modifier
+                modifier = modifier
                     .width(if (isSelected) 48.dp else 23.dp)
-                    .height(3.dp)
+                    .height(4.dp)
                     .background(
                         color =(if (isSelected) Block else Disable),
                         shape = RoundedCornerShape(5.dp)
                     )
-                    .padding(4.dp),
+                    .padding(horizontal = 4.dp),
 
             )
             if (index < screens.lastIndex) {
@@ -49,8 +51,9 @@ fun ScreenIndicator(currentScreen: ScreenState){
         }
     }
 }
+/*
 @Preview
 @Composable
 fun checkState(){
     ScreenIndicator(ScreenState.second)
-}
+}*/
