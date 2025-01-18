@@ -28,7 +28,8 @@ class HomeScreen: Screen {
             onValue = viewModel::onSearchChange,
             state = state,
             onHamburgerClick = {},
-            categories = categories
+            categories = categories,
+            onAll = {}
         )
     }
 }

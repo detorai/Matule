@@ -24,7 +24,7 @@ fun AddButton(
     Box(
         modifier = modifier
             .size(34.dp)
-            .background(color = Accent, shape = RoundedCornerShape(16.dp))
+            .background(color = Accent, shape = RoundedCornerShape(16.dp, 0.dp, 16.dp ,0.dp))
             .clickable {
                 onClick()
             },

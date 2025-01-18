@@ -55,6 +55,7 @@ fun SearchBar(
                     text = inputText.ifEmpty {
                         placeholder
                     },
+                    maxLines = 1,
                     modifier = Modifier.align(Alignment.CenterStart).padding(start = 62.dp),
                     fontFamily = peninimFont,
                     fontWeight = FontWeight.W400,

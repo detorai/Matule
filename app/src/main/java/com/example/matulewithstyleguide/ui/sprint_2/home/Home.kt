@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.matulewithstyleguide.common.CategoryLazyRow
+import com.example.matulewithstyleguide.common.RowWithClickableText
 import com.example.matulewithstyleguide.common.SearchRow
 import com.example.matulewithstyleguide.common.TopLabel
 import com.example.matulewithstyleguide.ui.theme.Background
@@ -21,8 +22,8 @@ fun Home(
     onHamburgerClick: ()-> Unit,
     inputText: String,
     onValue: (String) -> Unit,
-    categories: List<String>
-
+    categories: List<String>,
+    onAll: ()-> Unit
 ){
     Column(
         verticalArrangement = Arrangement.Top,
@@ -42,6 +43,10 @@ fun Home(
         CategoryLazyRow(
             categories = categories,
             modifier = Modifier.padding(top = 22.dp, start = 20.dp)
+        )
+        RowWithClickableText(
+            modifier = Modifier.padding(top = 24.dp, start = 20.dp, end = 20.dp),
+            onClick = onAll
         )
     }
 }
