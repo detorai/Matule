@@ -9,26 +9,19 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.matulewithstyleguide.R
-import com.example.matulewithstyleguide.data.model.Font
 import com.example.matulewithstyleguide.data.model.Font.peninimFont
+import com.example.matulewithstyleguide.data.model.Products
 import com.example.matulewithstyleguide.ui.theme.Accent
 import com.example.matulewithstyleguide.ui.theme.Block
 import com.example.matulewithstyleguide.ui.theme.Hint
@@ -36,20 +29,22 @@ import com.example.matulewithstyleguide.ui.theme.TextColor
 
 @Composable
 fun ProductCard(
-    modifier: Modifier,
     onAdd: ()-> Unit,
     onFavourite: ()-> Unit,
-    state: Boolean
+    state: Boolean,
+    products: Products,
+    addState: Boolean,
 ){
     Box(
-        modifier = modifier
+        modifier = Modifier
             .size(160.dp, 182.dp)
             .background(color = Block, shape = RoundedCornerShape(16.dp)),
         contentAlignment = Alignment.Center
     ){
         AddButton(
             onClick = onAdd,
-            modifier = Modifier.align(Alignment.BottomEnd)
+            modifier = Modifier.align(Alignment.BottomEnd),
+            state = addState
         )
         FavouriteButton(
             onClick = onFavourite,

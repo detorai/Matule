@@ -1,15 +1,14 @@
 package com.example.matulewithstyleguide
 
 import android.util.Log
+import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.matulewithstyleguide.data.SupabaseModule
-import com.example.matulewithstyleguide.data.SupabaseModule.client
+import com.example.matulewithstyleguide.data.model.Products
 import com.example.matulewithstyleguide.data.repository.AuthRepository
 import com.example.matulewithstyleguide.data.repository.AuthResult
-import io.github.jan.supabase.auth.auth
-import io.github.jan.supabase.auth.providers.builtin.Email
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
@@ -55,6 +54,48 @@ class SupabaseViewModel(private val authRep: AuthRepository): ViewModel() {
     }
 
     // Sprint 2
+
+    private val _products = MutableStateFlow<List<Products>>(emptyList())
+    val products: StateFlow<List<Products>> = _products.asStateFlow()
+
+    fun countProducts(count: Int){
+        viewModelScope.launch {
+            val newProducts = List(count) { Products() }
+            _products.value = newProducts
+        }
+    }
+    fun onFavourite(index: Int) {
+        _products.value = _products.value.mapIndexed { idx, product ->
+            if (idx == index) {
+                product.copy(
+                    favouriteButton = !product.favouriteButton,
+                    favourState = !product.favourState
+                )
+            } else {
+                product
+            }
+        }
+    }
+
+    fun onAdd(index: Int) {
+        _products.value = _products.value.mapIndexed { idx, product ->
+            if (idx == index) {
+                product.copy(
+                    addButton = !product.addButton,
+                    addState = true
+                )
+            } else {
+                product
+            }
+        }
+    }
+
+    fun onCart(){
+        if (!_shopState.value){
+        _shopState.value = !_shopState.value
+        }
+    }
+
 
     private val _searchText = MutableStateFlow("")
     val searchText = _searchText.asStateFlow()

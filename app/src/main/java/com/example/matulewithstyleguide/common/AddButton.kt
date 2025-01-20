@@ -19,7 +19,8 @@ import com.example.matulewithstyleguide.ui.theme.Accent
 @Composable
 fun AddButton(
     modifier: Modifier,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    state: Boolean
 ){
     Box(
         modifier = modifier
@@ -31,7 +32,7 @@ fun AddButton(
         contentAlignment = Alignment.Center
     ){
         Icon(
-            imageVector = ImageVector.vectorResource(R.drawable.plus),
+            imageVector = ImageVector.vectorResource(if (!state) R.drawable.plus else R.drawable.shop_cart ),
             contentDescription = "",
             tint = Color.Unspecified
         )

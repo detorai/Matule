@@ -20,7 +20,8 @@ import com.example.matulewithstyleguide.ui.theme.TextColor
 @Composable
 fun RowWithClickableText(
     modifier: Modifier,
-    onClick : ()-> Unit
+    onClick : ()-> Unit,
+    text: String
 ){
     val annotatedText = buildAnnotatedString {
         pushStringAnnotation("click", "clickable")
@@ -42,7 +43,7 @@ fun RowWithClickableText(
         modifier = modifier.fillMaxWidth()
     ) {
         Text(
-            "Популярное",
+            text,
             fontFamily = peninimFont,
             fontWeight = FontWeight.W400,
             fontSize = 16.sp,

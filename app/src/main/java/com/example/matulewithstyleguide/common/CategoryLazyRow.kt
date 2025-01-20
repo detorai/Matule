@@ -1,6 +1,7 @@
 package com.example.matulewithstyleguide.common
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -28,7 +29,8 @@ import com.example.matulewithstyleguide.ui.theme.TextColor
 @Composable
 fun CategoryLazyRow(
     categories: List<String>,
-    modifier: Modifier
+    modifier: Modifier,
+    onClick: (String)-> Unit
 ){
     Column (
         verticalArrangement = Arrangement.SpaceBetween,
@@ -53,8 +55,11 @@ fun CategoryLazyRow(
                         .background(
                             color = Block,
                             shape = RoundedCornerShape(8.dp)
-                        ),
-                    contentAlignment = Alignment.Center
+                        )
+                        .clickable {
+                            onClick(category)
+                        },
+                    contentAlignment = Alignment.Center,
                 ){
                     Text(
                         category,
