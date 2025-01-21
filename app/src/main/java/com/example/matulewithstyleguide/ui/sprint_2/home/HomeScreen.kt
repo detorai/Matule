@@ -15,14 +15,13 @@ import com.example.matulewithstyleguide.ui.sprint_2.catalog.CatalogScreen
 import com.example.matulewithstyleguide.ui.sprint_2.popular.PopularScreen
 import org.koin.androidx.compose.koinViewModel
 
-class HomeScreen: Screen {
+class HomeScreen(private val viewModel: SupabaseViewModel): Screen {
 
     override val key: ScreenKey = uniqueScreenKey
 
     @Composable
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
-        val viewModel = koinViewModel<SupabaseViewModel>()
 
         val inputText = viewModel.searchText.collectAsState().value
         val state = viewModel.shopState.collectAsState().value
@@ -32,6 +31,7 @@ class HomeScreen: Screen {
             viewModel.onAdd(index) }
         val onFavourite: (Int) -> Unit = { index ->
             viewModel.onFavourite(index) }
+        val selectedCategory = viewModel.selectedCategory.collectAsState().value
 
         LaunchedEffect(Unit) {
             viewModel.countProducts(2)
@@ -43,16 +43,16 @@ class HomeScreen: Screen {
             state = state,
             onHamburgerClick = {},
             categories = categories,
-            onAllFavour = {navigator.push(PopularScreen())},
+            onAllFavour = {navigator.push(PopularScreen(viewModel))},
             products = products,
             onAdd = onAdd,
             onFavourite = onFavourite,
             onCart = viewModel::onCart,
             onAllSale = {},
-            onClick = {
-                navigator.push(CatalogScreen())
-
+            onClick = {category ->
+                viewModel.selectCategory(category)
+                navigator.push(CatalogScreen(viewModel))
             }
-            )
+        )
     }
 }

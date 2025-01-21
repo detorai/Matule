@@ -6,9 +6,10 @@ import cafe.adriel.voyager.core.screen.ScreenKey
 import cafe.adriel.voyager.core.screen.uniqueScreenKey
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import com.example.matulewithstyleguide.SupabaseViewModel
 import com.example.matulewithstyleguide.ui.sprint_2.home.HomeScreen
 
-class OnboardScreen3: Screen {
+class OnboardScreen3(private val viewModel: SupabaseViewModel): Screen {
 
     override val key: ScreenKey = uniqueScreenKey
 
@@ -17,7 +18,7 @@ class OnboardScreen3: Screen {
         val navigator = LocalNavigator.currentOrThrow
 
         Onboard3(
-            onClick = {navigator.push(HomeScreen())}
+            onClick = {navigator.push(HomeScreen(viewModel))}
         )
     }
 }

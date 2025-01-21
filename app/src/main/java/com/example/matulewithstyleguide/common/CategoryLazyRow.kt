@@ -30,7 +30,7 @@ import com.example.matulewithstyleguide.ui.theme.TextColor
 fun CategoryLazyRow(
     categories: List<String>,
     modifier: Modifier,
-    onClick: (String)-> Unit
+    onClick: (String)-> Unit,
 ){
     Column (
         verticalArrangement = Arrangement.SpaceBetween,
@@ -58,6 +58,8 @@ fun CategoryLazyRow(
                         )
                         .clickable {
                             onClick(category)
+
+
                         },
                     contentAlignment = Alignment.Center,
                 ){

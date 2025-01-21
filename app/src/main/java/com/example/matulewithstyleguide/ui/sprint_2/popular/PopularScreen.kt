@@ -11,14 +11,13 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import com.example.matulewithstyleguide.SupabaseViewModel
 import org.koin.androidx.compose.koinViewModel
 
-class PopularScreen: Screen {
+class PopularScreen(private val viewModel: SupabaseViewModel): Screen {
 
     override val key: ScreenKey = uniqueScreenKey
 
     @Composable
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
-        val viewModel = koinViewModel<SupabaseViewModel>()
 
         val products = viewModel.products.collectAsState().value
         val onAdd: (Int) -> Unit = { index ->

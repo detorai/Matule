@@ -1,17 +1,15 @@
-package com.example.matulewithstyleguide.ui.sprint_2.onboard_1
+package com.example.matulewithstyleguide.ui.sprint_4.verification
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.core.screen.ScreenKey
 import cafe.adriel.voyager.core.screen.uniqueScreenKey
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.example.matulewithstyleguide.SupabaseViewModel
-import com.example.matulewithstyleguide.data.model.ScreenState
-import com.example.matulewithstyleguide.ui.sprint_2.onboard_2.OnboardScreen2
-import org.koin.androidx.compose.koinViewModel
 
-class OnboardScreen1(private val viewModel: SupabaseViewModel): Screen {
+class VerificationScreen(private val viewModel: SupabaseViewModel):Screen {
 
     override val key: ScreenKey = uniqueScreenKey
 
@@ -19,10 +17,15 @@ class OnboardScreen1(private val viewModel: SupabaseViewModel): Screen {
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
 
+        val codeText = viewModel.codeText.map{ it.collectAsState("") }.map { it.value }
 
-        Onboard1(
-            currentScreen = ScreenState.first,
-            onClick = {navigator.push(OnboardScreen2(viewModel))}
+
+        Verification(
+            codeText = codeText,
+            onCode = viewModel::onCodeChange,
+            onClickBack = {navigator.pop()},
+            onSend = {}
         )
     }
+
 }

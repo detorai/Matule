@@ -39,7 +39,8 @@ fun Catalog(
     products: List<Products>,
     onFavourite: (Int)-> Unit,
     onAdd:(Int)-> Unit,
-    onClick: (Int) -> Unit
+    onClick: (String) -> Unit,
+    category: String
 ){
     Column(
         horizontalAlignment = Alignment.Start,
@@ -67,7 +68,7 @@ fun Catalog(
                 )
             }
             Text(
-                "",
+                category,
                 fontFamily = peninimFont,
                 fontSize = 16.sp,
                 lineHeight = 24.sp,
@@ -75,20 +76,10 @@ fun Catalog(
                 color = TextColor,
             )
         }
-        Text(
-            "Категории",
-            fontFamily = peninimFont,
-            fontWeight = FontWeight.W400,
-            fontSize = 16.sp,
-            lineHeight = 16.38.sp,
-            color = TextColor
-        )
         CategoryLazyRow(
             categories = categories,
-            modifier = Modifier.padding(top = 19.dp),
-            onClick = {
-
-            }
+            modifier = Modifier.padding(top = 16.dp),
+            onClick = onClick
         )
         LazyVerticalGrid(
             columns = GridCells.FixedSize(160.dp),

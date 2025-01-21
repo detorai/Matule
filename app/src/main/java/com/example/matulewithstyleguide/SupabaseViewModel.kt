@@ -2,6 +2,7 @@ package com.example.matulewithstyleguide
 
 import android.util.Log
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.matulewithstyleguide.data.model.Products
@@ -11,6 +12,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlin.random.Random
 
 class SupabaseViewModel(private val authRep: AuthRepository): ViewModel() {
 
@@ -108,4 +110,88 @@ class SupabaseViewModel(private val authRep: AuthRepository): ViewModel() {
     val shopState = _shopState.asStateFlow()
 
     val categories = listOf("Все", "Outdoor", "Tennis", "Running")
+
+    private val _selectedCategory = MutableStateFlow("")
+    val selectedCategory = _selectedCategory.asStateFlow()
+
+    fun selectCategory(category: String){
+        _selectedCategory.value = category
+        Log.d("category:" ,"$category, ${_selectedCategory.value}")
+    }
+
+
+    //sprint 4
+    private val _nameTextSU = MutableStateFlow("")
+    val nameTextSU = _nameTextSU.asStateFlow()
+
+    private val _emailTextSU = MutableStateFlow("")
+    val emailTextSU = _emailTextSU.asStateFlow()
+
+    private val _passwordTextSU = MutableStateFlow("")
+    val passwordTextSU = _passwordTextSU.asStateFlow()
+
+    private val _viewStateSU = MutableStateFlow(false)
+    val viewStateSU = _viewStateSU.asStateFlow()
+
+    private val _checkState = MutableStateFlow(false)
+    val checkState = _checkState.asStateFlow()
+
+
+    fun onNameChangeSU(name:String){
+        _nameTextSU.value = name
+    }
+
+    fun onEmailChangeSU(email: String){
+        _emailTextSU.value = email
+    }
+
+    fun onPasswordChangeSU(password: String){
+        _passwordTextSU.value = password
+    }
+
+    fun viewStateChangeSU(){
+        _viewStateSU.value = !_viewStateSU.value
+    }
+
+    fun onCheckState(){
+        _checkState.value = !checkState.value
+    }
+
+    private val _emailTextFP = MutableStateFlow("")
+    val emailTextFP = _emailTextFP.asStateFlow()
+
+    fun onEmailChangeFP(email: String){
+        _emailTextFP.value = email
+    }
+
+    private val _showDialog = MutableStateFlow(false)
+    val showDialog = _showDialog.asStateFlow()
+
+    fun onPopup(){
+        _showDialog.value = !_showDialog.value
+    }
+
+
+    private var _codeText = List(6) { MutableStateFlow("") }
+    var codeText = _codeText.map { it.asStateFlow() }
+
+    var codeOTP = mutableStateOf<List<Int>>(emptyList())
+
+
+
+    fun onCodeChange(index: Int, text: String) {
+        if (index in _codeText.indices) {
+            _codeText[index].value = text
+        }
+    }
+
+    private fun genOTP(size: Int = 6, range: IntRange = 0..9): List<Int> {
+        return List(size) { Random.nextInt(range.first, range.last + 1)}
+    }
+
+    fun sendOTP(email: String){
+        codeOTP.value = genOTP()
+        _emailTextFP.value = email
+        Log.d("OTP CODE", "email:$email\nOTP Code:${codeOTP.value.joinToString { it.toString() }}")
+    }
 }
