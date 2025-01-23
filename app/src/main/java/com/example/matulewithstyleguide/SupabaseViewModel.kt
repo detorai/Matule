@@ -119,6 +119,8 @@ class SupabaseViewModel(private val authRep: AuthRepository): ViewModel() {
         Log.d("category:" ,"$category, ${_selectedCategory.value}")
     }
 
+    //sprint 3
+
 
     //sprint 4
     private val _nameTextSU = MutableStateFlow("")
@@ -194,4 +196,37 @@ class SupabaseViewModel(private val authRep: AuthRepository): ViewModel() {
         _emailTextFP.value = email
         Log.d("OTP CODE", "email:$email\nOTP Code:${codeOTP.value.joinToString { it.toString() }}")
     }
+
+
+    private val _emailInfo = MutableStateFlow("")
+    val emailInfo = _emailInfo.asStateFlow()
+
+    private val _phoneInfo = MutableStateFlow("")
+    val phoneInfo = _phoneInfo.asStateFlow()
+
+    private val _addressInfo = MutableStateFlow("")
+    val addressInfo = _addressInfo.asStateFlow()
+
+    private val _sum = MutableStateFlow(Double)
+    val sum = _sum.asStateFlow()
+
+    private val _fullSum = MutableStateFlow(Double)
+    val fullSum = _fullSum.asStateFlow()
+
+    private val _delivery = MutableStateFlow(Double)
+    val delivery = _delivery.asStateFlow()
+
+    fun onEmailInfo(){
+
+    }
+    fun onPhoneInfo(){
+
+    }
+    fun onAddressInfo(){
+
+    }
+
+//    private fun fullSumCalc(): Double{
+//        return (_sum.value  _delivery.value)
+//    }
 }

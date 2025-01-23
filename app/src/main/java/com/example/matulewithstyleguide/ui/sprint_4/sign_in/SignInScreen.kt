@@ -8,10 +8,8 @@ import cafe.adriel.voyager.core.screen.uniqueScreenKey
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.example.matulewithstyleguide.SupabaseViewModel
-import com.example.matulewithstyleguide.ui.sprint_4.forgot_password.ForgotPass
 import com.example.matulewithstyleguide.ui.sprint_4.forgot_password.ForgotPassScreen
 import com.example.matulewithstyleguide.ui.sprint_4.sign_up.SignUpScreen
-import org.koin.androidx.compose.koinViewModel
 
 class SignInScreen(private val viewModel: SupabaseViewModel): Screen {
 

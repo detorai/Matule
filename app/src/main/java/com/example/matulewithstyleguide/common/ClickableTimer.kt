@@ -57,36 +57,22 @@ fun ClickableTimer(
 
 
     val annotatedText = buildAnnotatedString {
-        if (timerVisible) {
-            pushStringAnnotation("click", "clickable")
-            withStyle(SpanStyle(
-                fontWeight = FontWeight.W400,
-                fontSize = 12.sp,
-                color = SubTextDark,
-            )) {
-                append(timeDisplay)
-            }
+        pushStringAnnotation("click", "clickable")
+        withStyle(SpanStyle(
+            fontWeight = FontWeight.W400,
+            fontSize = 12.sp,
+            color = SubTextDark,
+        )) {
+            append("Отправить заново")
         }
-        pop()
     }
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
         modifier = modifier.fillMaxWidth()
     ) {
-        Text(
-            "Отправить заново",
-            fontWeight = FontWeight.W400,
-            fontSize = 12.sp,
-            lineHeight = 12.28.sp,
-            fontFamily = peninimFont,
-            color = SubTextDark
-        )
         ClickableText(
             text = annotatedText,
-            style = TextStyle(
-                textAlign = TextAlign.Right
-            ),
             onClick = { offset ->
                 if (isClickable) {
                     annotatedText.getStringAnnotations(offset, offset)
@@ -101,5 +87,16 @@ fun ClickableTimer(
                 }
             }
         )
+        if(timerVisible) {
+            Text(
+                timeDisplay,
+                fontWeight = FontWeight.W400,
+                fontSize = 12.sp,
+                lineHeight = 12.28.sp,
+                fontFamily = peninimFont,
+                color = SubTextDark,
+                textAlign = TextAlign.Right
+            )
+        }
     }
 }

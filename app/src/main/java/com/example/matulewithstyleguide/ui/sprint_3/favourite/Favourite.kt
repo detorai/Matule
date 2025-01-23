@@ -1,4 +1,4 @@
-package com.example.matulewithstyleguide.ui.sprint_2.popular
+package com.example.matulewithstyleguide.ui.sprint_3.favourite
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -19,7 +19,7 @@ import com.example.matulewithstyleguide.data.model.Products
 import com.example.matulewithstyleguide.ui.theme.Background
 
 @Composable
-fun Popular(
+fun Favourite(
     onBack:() -> Unit,
     onFavour: ()-> Unit,
     products: List<Products>,
@@ -35,8 +35,8 @@ fun Popular(
             onClickBack = onBack,
             onFavour = onFavour,
             modifier = Modifier,
-            label = "Популярное",
-            heart = R.drawable.heart
+            heart = R.drawable.fill_heart,
+            label = "Избранное"
         )
         LazyVerticalGrid(
             columns = GridCells.FixedSize(160.dp),

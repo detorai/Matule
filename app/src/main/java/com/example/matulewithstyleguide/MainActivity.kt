@@ -16,6 +16,7 @@ import com.example.matulewithstyleguide.ui.sprint_2.onboard_1.OnboardScreen1
 import com.example.matulewithstyleguide.ui.sprint_2.onboard_2.OnboardScreen2
 import com.example.matulewithstyleguide.ui.sprint_2.onboard_3.OnboardScreen3
 import com.example.matulewithstyleguide.ui.sprint_2.popular.PopularScreen
+import com.example.matulewithstyleguide.ui.sprint_4.checkout.CheckoutScreen
 import com.example.matulewithstyleguide.ui.sprint_4.sign_up.SignUpScreen
 import com.example.matulewithstyleguide.ui.sprint_4.verification.VerificationScreen
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -43,7 +44,7 @@ class MainActivity : ComponentActivity() {
         )
 
         setContent {
-                Navigator(VerificationScreen(viewModel))
+                Navigator(CheckoutScreen(viewModel))
         }
     }
 }

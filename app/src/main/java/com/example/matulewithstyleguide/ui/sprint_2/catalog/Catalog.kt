@@ -29,6 +29,7 @@ import com.example.matulewithstyleguide.common.CategoryLazyRow
 import com.example.matulewithstyleguide.common.ProductCard
 import com.example.matulewithstyleguide.data.model.Font.peninimFont
 import com.example.matulewithstyleguide.data.model.Products
+import com.example.matulewithstyleguide.ui.theme.Background
 import com.example.matulewithstyleguide.ui.theme.Block
 import com.example.matulewithstyleguide.ui.theme.TextColor
 
@@ -44,7 +45,7 @@ fun Catalog(
 ){
     Column(
         horizontalAlignment = Alignment.Start,
-        modifier = Modifier.fillMaxWidth().fillMaxHeight().padding(horizontal = 20.dp)
+        modifier = Modifier.fillMaxWidth().fillMaxHeight().background(color = Background).padding(horizontal = 20.dp)
     ) {
         Box(
             modifier = Modifier.fillMaxWidth().padding(top = 48.dp),

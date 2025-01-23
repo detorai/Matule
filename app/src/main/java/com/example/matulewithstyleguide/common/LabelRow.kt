@@ -1,5 +1,6 @@
 package com.example.matulewithstyleguide.common
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -17,7 +18,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.matulewithstyleguide.R
@@ -26,10 +26,12 @@ import com.example.matulewithstyleguide.ui.theme.Block
 import com.example.matulewithstyleguide.ui.theme.TextColor
 
 @Composable
-fun PopularRow(
+fun LabelRow(
     onClickBack: ()-> Unit,
     onFavour: ()-> Unit,
-    modifier: Modifier
+    modifier: Modifier,
+    label: String,
+    @DrawableRes heart: Int
 ){
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -52,7 +54,7 @@ fun PopularRow(
             )
         }
         Text(
-            "Популярное",
+            label,
             fontFamily = peninimFont,
             fontSize = 16.sp,
             lineHeight = 24.sp,
@@ -69,7 +71,7 @@ fun PopularRow(
                 }
         ) {
             Icon(
-                imageVector = ImageVector.vectorResource(R.drawable.heart),
+                imageVector = ImageVector.vectorResource(heart),
                 contentDescription = "icon",
                 tint = Color.Unspecified,
                 modifier = Modifier.size(18.dp,16.dp)
@@ -78,12 +80,3 @@ fun PopularRow(
     }
 }
 
-@Preview
-@Composable
-fun check(){
-    PopularRow(
-        modifier = Modifier,
-        onFavour = {},
-        onClickBack = {}
-    )
-}
