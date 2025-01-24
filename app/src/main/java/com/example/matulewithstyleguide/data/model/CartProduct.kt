@@ -4,7 +4,7 @@ package com.example.matulewithstyleguide.data.model
 
 )*/
 enum class SwipeableState {
-    DEFAULT,
     COUNT,
+    DEFAULT,
     DELETE
 }

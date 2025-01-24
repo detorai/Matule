@@ -34,7 +34,8 @@ fun SearchRow(
             inputText = inputText,
             onValue = onValue,
             placeholder = "Поиск",
-            modifier = Modifier
+            modifier = Modifier,
+            state = false
         )
         Box(
             contentAlignment = Alignment.Center,

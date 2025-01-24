@@ -44,7 +44,7 @@ class MainActivity : ComponentActivity() {
         )
 
         setContent {
-                Navigator(CheckoutScreen(viewModel))
+                Navigator(HomeScreen(viewModel))
         }
     }
 }
